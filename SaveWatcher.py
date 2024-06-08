@@ -38,14 +38,15 @@ if __name__ == "__main__":
                         help='The destination to which watched files should be added')
 
     args = parser.parse_args()
-
-    file_to_watch = "C:\\Users\\Wajha\\Documents\\Paradox Interactive\\Victoria 3\\save games\\autosave.v3"
-    destination_directory = "campaign6"
+    if args[0] == 'auto':
+        file_to_watch = "C:\\Users\\Wajha\\Documents\\Paradox Interactive\\Victoria 3\\save games\\autosave.v3"
+    else:
+        file_to_watch = args[0]
+    destination_directory = args[1]
     if not os.path.exists(destination_directory):
         os.makedirs(destination_directory)
 
-    shutil.copy("C:\\Users\\Wajha\\Documents\\Paradox Interactive\\Victoria 3\\save games\\campaign6.v3",
-                destination_directory)
+    shutil.copy(file_to_watch,destination_directory)
 
     event_handler = FileUpdateHandler(file_to_watch, destination_directory)
     observer = Observer()

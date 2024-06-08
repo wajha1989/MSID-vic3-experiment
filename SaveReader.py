@@ -198,7 +198,3 @@ def choose_random_entries(input_file, n):
 
     else:
         raise NameError('Please provide a valid CSV file')
-
-
-if __name__ == '__main__':
-    choose_random_entries('campaign1.csv', 1000000)
